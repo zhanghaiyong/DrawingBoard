@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadUrlViewController">
+            <connections>
+                <outlet property="backImg" destination="HJl-DU-vs1" id="dzb-qG-Qvy"/>
+                <outlet property="imageView" destination="bRr-xo-JeG" id="9k2-Tc-ciJ"/>
+                <outlet property="popupView" destination="Sqn-9d-fmM" id="ALF-WG-hmh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImg" translatesAutoresizingMaskIntoConstraints="NO" id="HJl-DU-vs1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqn-9d-fmM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CP55弹窗图" translatesAutoresizingMaskIntoConstraints="NO" id="bRr-xo-JeG">
+                            <rect key="frame" x="37.5" y="167" width="300" height="333.5"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="bRr-xo-JeG" firstAttribute="width" secondItem="Sqn-9d-fmM" secondAttribute="width" multiplier="0.8" id="Jrt-a1-FH8"/>
+                        <constraint firstItem="bRr-xo-JeG" firstAttribute="centerX" secondItem="Sqn-9d-fmM" secondAttribute="centerX" id="WPA-49-WmM"/>
+                        <constraint firstItem="bRr-xo-JeG" firstAttribute="height" secondItem="Sqn-9d-fmM" secondAttribute="height" multiplier="0.5" id="wMb-Yv-X2y"/>
+                        <constraint firstItem="bRr-xo-JeG" firstAttribute="centerY" secondItem="Sqn-9d-fmM" secondAttribute="centerY" id="x9o-9C-2BX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Sqn-9d-fmM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0hP-dc-kXY"/>
+                <constraint firstItem="HJl-DU-vs1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="14T-Mg-B79"/>
+                <constraint firstAttribute="trailing" secondItem="HJl-DU-vs1" secondAttribute="trailing" id="8d8-QH-swY"/>
+                <constraint firstItem="Sqn-9d-fmM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9zj-ZA-XOz"/>
+                <constraint firstAttribute="bottom" secondItem="Sqn-9d-fmM" secondAttribute="bottom" id="B8b-wL-gvF"/>
+                <constraint firstAttribute="bottom" secondItem="HJl-DU-vs1" secondAttribute="bottom" id="IKE-re-ELd"/>
+                <constraint firstItem="HJl-DU-vs1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n0a-Hc-sjb"/>
+                <constraint firstAttribute="trailing" secondItem="Sqn-9d-fmM" secondAttribute="trailing" id="rTL-Eh-sWk"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="CP55弹窗图" width="267" height="290"/>
+        <image name="backImg" width="1242" height="2208"/>
+    </resources>
+</document>
