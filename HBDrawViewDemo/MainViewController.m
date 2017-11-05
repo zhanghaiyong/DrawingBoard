@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.view.backgroundColor  = [UIColor whiteColor];
     [self.view addSubview:self.drawView];
     
 }
@@ -34,12 +34,14 @@
     
     [self drawSetting:nil];
 }
+
 - (IBAction)drawSetting:(id)sender {
     
     self.drawView.shapType = ((UIButton *)sender).tag;
     
     [self.drawView showSettingBoard];
 }
+
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {

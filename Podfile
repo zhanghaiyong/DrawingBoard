@@ -6,4 +6,5 @@ pod 'AFNetworking'
 pod 'SVProgressHUD', '~> 2.2.1'
 pod 'JPush'
 pod 'Reachability'
+pod 'AVOSCloud' 
 end

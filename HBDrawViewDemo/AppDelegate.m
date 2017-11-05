@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoadUrlViewController.h"
 #import "AppDelegate+UPush.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    //leanCloud
+    [AVOSCloud setApplicationId:@"pJHexdYgOcK8UAJISJ4dBEnM-gzGzoHsz" clientKey:@"7TXduYclSj77kwmVAhe5bAPx"];
     
     //开启网络状况的监听
     [[NSNotificationCenter defaultCenter] addObserver:self

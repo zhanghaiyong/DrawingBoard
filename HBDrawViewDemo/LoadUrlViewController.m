@@ -5,80 +5,91 @@
 //  Created by 张海勇 on 2017/9/16.
 //  Copyright © 2017年 zhy. All rights reserved.
 //
-#define requestUrl @"http://apns.push0001.com/getApi.jbm?app_id=1300064681"
 
 #import "LoadUrlViewController.h"
 #import "KSMNetworkRequest.h"
 #import "MainViewController.h"
 #import <SVProgressHUD.h>
-@interface LoadUrlViewController ()
-{
-    NSDictionary *result;
+#import <AVOSCloud/AVOSCloud.h>
+@interface LoadUrlViewController ()<UIWebViewDelegate>{
+    AVObject *avObj;
 }
-@property (weak, nonatomic) IBOutlet UIImageView *backImg;
-
-@property (weak, nonatomic) IBOutlet UIView *popupView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @end
 
 @implementation LoadUrlViewController
 
+- (IBAction)homeAction:(id)sender {
+    
+    NSURL *debugURL=[NSURL URLWithString:avObj[@"url"]];
+    NSURLRequest *request=[NSURLRequest requestWithURL:debugURL];
+    [self.webView loadRequest:request];
+}
+- (IBAction)backAction:(id)sender {
+     [self.webView goBack];
+}
+- (IBAction)forwardAction:(id)sender {
+    [self.webView goForward];
+}
+- (IBAction)refreshAction:(id)sender {
+    [self.webView reload];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [SVProgressHUD showWithStatus:@"正在加载中..."];
+    self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView.scrollView.bounces = NO;
+    self.webView.scrollView.showsVerticalScrollIndicator = NO;
+    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapOpenUrl)];
-    [self.imageView addGestureRecognizer:tap];
+//    AVObject *todo = [AVObject objectWithClassName:@"oneClass"];
+//    [todo setObject:@"YES" forKey:@"show"];
+//    [todo setObject:@"http://www.cocoachina.com" forKey:@"url"];
+//    [todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            // 存储成功
+//            return ;
+//        } else {
+//            // 失败的话，请检查网络环境以及 SDK 配置是否正确
+//        }
+//    }];
     
-    [self requestData];
     
-}
-
-- (void)requestData {
-    [KSMNetworkRequest getRequest:requestUrl params:nil success:^(id responseObj) {
-        NSLog(@"responseObj = %@",responseObj);
+    AVQuery *query = [AVQuery queryWithClassName:@"oneClass"];
+    __weak LoadUrlViewController *weakSelf = self;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
-        [SVProgressHUD dismiss];
-        
-        if ([responseObj[@"code"] integerValue] == 200) {
-            result = responseObj[@"result"];
-            if ([result[@"is_show_tip"] integerValue] == 1) {
-                self.popupView.hidden = NO;
-                self.backImg.hidden = NO;
+        if (!error) {
+            avObj = objects[0];
+            if ([avObj[@"show"] isEqualToString:@"YES"]) {
+                
+                weakSelf.toolBar.hidden = NO;
+                
+                NSURL *debugURL=[NSURL URLWithString:avObj[@"url"]];
+                NSURLRequest *request=[NSURLRequest requestWithURL:debugURL];
+                [weakSelf.webView loadRequest:request];
+                [weakSelf.view addSubview:weakSelf.webView];
+                
             }else {
-                self.popupView.hidden = YES;
-                self.backImg.hidden = YES;
                 UIStoryboard *SB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                MainViewController *mainVC = [SB instantiateViewControllerWithIdentifier:@"MainViewController"];
-                [UIApplication sharedApplication].keyWindow.rootViewController = mainVC;
+                MainViewController *tabbar = [SB instantiateViewControllerWithIdentifier:@"MainViewController"];
+                [UIApplication sharedApplication].keyWindow.rootViewController = tabbar;
             }
         }else {
-            
             UIStoryboard *SB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MainViewController *mainVC = [SB instantiateViewControllerWithIdentifier:@"MainViewController"];
-            [UIApplication sharedApplication].keyWindow.rootViewController = mainVC;
+            MainViewController *tabbar = [SB instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [UIApplication sharedApplication].keyWindow.rootViewController = tabbar;
         }
-        
-    } failure:^(NSError *error) {
-        [SVProgressHUD dismiss];
-        self.popupView.hidden = YES;
-        self.backImg.hidden = YES;
     }];
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if (self.popupView.hidden == YES && self.backImg.hidden == YES) {
-        [self requestData];
-    }
-}
-
-- (void)tapOpenUrl {
-    NSURL *url = [NSURL URLWithString:result[@"url"]];
-    [[UIApplication sharedApplication]openURL:url];
+    [SVProgressHUD dismiss];
+    return YES;
 }
 
 @end
