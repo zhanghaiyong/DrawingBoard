@@ -442,8 +442,8 @@
 				TargetAttributes = {
 					5E1F3FA81BF33C4B00ACE525 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = D5Q78CSZ5T;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 78X8SVBSSG;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -747,15 +747,15 @@
 				CODE_SIGN_ENTITLEMENTS = HBDrawViewDemo/HBDrawViewDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D5Q78CSZ5T;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X8SVBSSG;
 				INFOPLIST_FILE = HBDrawViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baccarat.drawBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "11f44522-7d69-4131-8b1b-5fa3d8b3e38b";
-				PROVISIONING_PROFILE_SPECIFIER = drawBoardDevPro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -768,16 +768,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = HBDrawViewDemo/HBDrawViewDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D5Q78CSZ5T;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X8SVBSSG;
 				INFOPLIST_FILE = HBDrawViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baccarat.drawBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbe3e250-b030-4f47-9e9e-8936b7b79192";
-				PROVISIONING_PROFILE_SPECIFIER = DrawBoardDisPro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
